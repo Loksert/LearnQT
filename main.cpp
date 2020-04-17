@@ -5,24 +5,28 @@
 int main (int argc, char** argv)
 {
     QApplication app(argc, argv);
-    QTextEdit    txt;
 
-    QFont fnt("Lucida Console", 9, QFont::Normal);
-    txt.document()->setDefaultFont(fnt);
 
-    new SyntaxHighlighter(txt.document());
+    const int n = 3;
+    QTabWidget tab;
+    QTreeWidget twg;
+    QStringList llst;
+    QStringList lst;
+    QTableWidget tbl(n,n);
+    QTableWidgetItem* ptwi = nullptr;
 
-    QPalette pal = txt.palette();
-    pal.setColor(QPalette::Base, Qt::white);
-    pal.setColor(QPalette::Text, Qt::red);
-    txt.setPalette(pal);
+    lst<<"First"<<"Second"<<"Third";
+    tbl.setHorizontalHeaderLabels(lst);
+    tbl.setVerticalHeaderLabels(lst);
 
-    txt.show();
-    txt.resize(800, 600);
+    tab.addTab(&tbl,"Table");
+    tab.addTab(new QLabel("Linux",&tab),"Linux");
 
-    QFile file(":/SyntaxHighlighter.cpp");
-    file.open(QFile::ReadOnly);
-    txt.setPlainText(QLatin1String(file.readAll()));
+    tbl.resize(370,135);
+    tab.resize(370,135);
+    tab.show();
+
+
 
     return app.exec();
 }
