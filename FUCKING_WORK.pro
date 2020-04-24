@@ -26,12 +26,10 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-        syntaxl.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-        syntaxl.h
+        mainwindow.h
 
 FORMS += \
         mainwindow.ui
